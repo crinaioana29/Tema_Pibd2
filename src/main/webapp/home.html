@@ -9,28 +9,36 @@ and open the template in the editor.
 <title>home</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style type="text/css">
+body {background-image:url("142036.jpg");
+	  background-size:1080px;}
+	  
+</style>
 </head>
 <body>
 <hr>
 <hr>
 <br/>
-<h2>Vizualizari + Adaugari + Stergeri</h2>
-<p> <a href="tabela_Locatii.jsp"><b><strong>Locatii</strong></b></a></p>
-<p> <a href="tabela_Farmacii.jsp"><b><strong>Farmacii</strong></b></a></p>
-<p> <a href="tabela_Angajati.jsp"><b><strong>Angajati</strong></b></a></p>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-20">
+			<h2 class="text-center">
+			<p align="center" style="color:black;font-family: Verdana, sans-serif;">
+				Organizare farmacii
+			</h2>
+		</div>
+	</div>
+</div>
+<p align="center">
+<p style="text-align:center"> <a href="tabela_Locatii.jsp"><button><strong>Locatii</strong></button></a></p>
+<p style="text-align:center"> <a href="tabela_Farmacii.jsp"><button><strong>Farmacii</strong></button></a></p>
+<p style="text-align:center"> <a href="tabela_Angajati.jsp"><button><strong>Angajati</strong></button></a></p>
 <br/>
-<hr>
-<ul>
-<li><a href="modifica_Locatie.jsp"><b><strong>Modifica Locatii</strong></b></a></li>
+<ul style="list-style:none">
+<li style="text-align:center"><a href="modifica_Locatii.jsp"><button><strong>Modifica Locatii</strong></button></a></li>
+<li style="text-align:center"><a href="modifica_Farmacii.jsp"><button><strong>Modifica Farmacii</strong></button></a></li>
+<li style="text-align:center"><a href="modifica_Angajati.jsp"><button><strong>Modifica Angajati</strong></button></a></li>
 </ul>
-<ul>
-<li><a href="modifica_Farmacie.jsp"><b><strong>Modifica Farmacii</strong></b></a></li>
-</ul>
-<ul>
-<li><a href="modifica_Angajat.jsp"><b><strong>Modifica Angajati</strong></b></a></li>
-</ul>
-<hr>
-<hr>
 <br/>
 </body>
 </html>

@@ -7,12 +7,22 @@
         <title>Tabela Locatii</title>
         <link href="table.css" rel="stylesheet" type="text/css" media="screen" />
     </head>
+    <style type="text/css">
+body {background-image:url("142036.jpg");
+	  background-size:1080px;}  
+</style>
+</head>
+    <style type="text/css">
+body {background-image:url("142036.jpg");
+	  background-size:1080px;}  
+</style>
+</head>
     <jsp:useBean id="jb" scope="session" class="db.JavaBean" />
     <jsp:setProperty name="jb" property="*" />
     <body>
         <h1 align="center"> Tabela Locatii:</h1>
         <br/>
-        <p align="center"><a href="nou_Locatie.jsp"><b>Adauga o noua locatie.</b></a> <a href="home.html"><b>Home</b></a></p>
+        <p align="center"><a href="nou_Locatie.jsp"><button>Adauga o noua locatie.</button></a> <a href="home.html"><button>Home</button></a></p>
         <%
             jb.connect();
         	long aux= 0;
@@ -28,9 +38,9 @@
             lc.modifyLocations("locations", "idlocation", aux, campuri, valori);
             jb.disconnect();
         %>
-        <h1 align="center">Modificarile au fost efectuate !</h1>
+        <h1 align="center">Modificarile au fost efectuate!</h1>
         <p align="center">
-            <a href="home.html"><b>Home</b></a>
+            <a href="home.html"><button>Home</button></a>
             <br/>
     </body>
 </html>

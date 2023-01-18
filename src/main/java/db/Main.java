@@ -69,11 +69,11 @@ public class Main {
 		//Testing pharmacies queries
 		PharmaciesModel pharmacy = new PharmaciesModel("Catena", 2007);
 		PharmaciesDAO pharmaciesDAO = new PharmaciesDAO(jb.getConnection());
-		pharmaciesDAO.addPharmacies(pharmacy);
+//		pharmaciesDAO.addPharmacies(pharmacy);
 		String[] primaryKeys3 = {"2"};
 		String[] campuri3 = {"idpharmacy", "name", "est_year"};
 		String[] valori3 = {"1", "2", "3"};
-		pharmaciesDAO.modifyPharmacies("pharmacies", "idpharmacy", 1, campuri3, valori3);
+//		pharmaciesDAO.modifyPharmacies("pharmacies", "idpharmacy", 1, campuri3, valori3);
 		pharmaciesDAO.deletePharmacies(primaryKeys3);
 		//print queries
 		ResultSet rs3 = pharmaciesDAO.showPharmacies();

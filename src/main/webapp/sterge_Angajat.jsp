@@ -6,6 +6,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Tabela Angajat</title>
 </head>
+<style type="text/css">
+body {background-image:url("142036.jpg");
+	  background-size:1080px;}
+	  	  
+</style>
+</head>
 <jsp:useBean id="jb" scope="session" class="db.JavaBean" />
 <jsp:setProperty name="jb" property="*" />
 <body>
@@ -16,8 +22,9 @@ EmployeesDAO employee = new EmployeesDAO(jb.getConnection());
 employee.deleteEmployees(s);
 jb.disconnect();
 %>
+<h1 align="center" style="color:black;font-family: Verdana, sans-serif;"> Datele au fost sterse.</h1>
 <p align="center">
-<a href="home.html"><b>Home</b></a>
+<a href="home.html"><button>Home</button></a>
 <br/>
 </p>
 </body>

@@ -6,6 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Adauga locatie</title>
 </head>
+<style type="text/css">
+body {background-image:url("142036.jpg");
+	  background-size:1080px;}  
+</style>
+</head>
 <jsp:useBean id="jb" scope="session" class="db.JavaBean" />
 <jsp:setProperty name="jb" property="*" />
 <body>
@@ -19,28 +24,31 @@ LocationsDAO locationDAO = new LocationsDAO(jb.getConnection());
 locationDAO.addLocations(lc);
 jb.disconnect();
 %>
-<p>Datele au fost adaugate.</p><%
+<h1 align="center" style="color:black;font-family: Verdana, sans-serif;">Datele au fost adaugate.</h1><%
 } else {
 %>
-<h1> Suntem in tabela Locatie.</h1>
+<h1 align="center" style="color:black;font-family: Verdana, sans-serif;"> Adaugati o noua locatie:</h1>
 <form action="nou_Locatie.jsp" method="post">
-<table>
+<table style="margin-left: auto;
+  margin-right: auto;">
 <tr>
-<td align="right">Judet:</td>
+<td align="center">Judet:</td>
 <td> <input type="text" name="County" size="40" /></td>
 </tr>
-<tr>
-<td align="right">Oras:</td>
+<tr style="text-align: center; 
+    vertical-align: middle;">
+<td align="center">Oras:</td>
 <td> <input type="text" name="City" size="30" /></td>
 </tr>
 </table>
+<p align="center">
 <input type="submit" value="Adauga locatie" />
 </form>
 <%
 }
 %>
-<br/>
-<a href="home.html"><b>Home</b></a>
+<p align="center">
+<a href="home.html"><button>Home</button></a>
 <br/>
 </body>
 </html>

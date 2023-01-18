@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import models.EmployeesModel;
+import models.LocationsModel;
 import models.PharmaciesModel;
 
 public class PharmaciesDAO {
@@ -16,13 +18,31 @@ public class PharmaciesDAO {
 		this.con = con;
 	}
 	
-	public void addPharmacies(PharmaciesModel pharmacy) throws SQLException, Exception {
+	public void addPharmacies(PharmaciesModel pharmacy,LocationsModel locations, EmployeesModel employees) 
+			throws SQLException, Exception {
 		if(con != null) {
 			try {
-				Statement stmt;
+				Statement stmt,stmt_2,stmt_3;
+				PreparedStatement last_id;
+				ResultSet rs=null;
 				stmt = con.createStatement();
+				stmt_2=con.createStatement();
+				stmt_3=con.createStatement();
 				stmt.executeUpdate("insert into pharmacies(name, est_year) values('" + pharmacy.getName() + 
 						"', '" + pharmacy.getEst_Year() + "');");
+				last_id=con.prepareStatement("select idpharmacy from pharmacies order by idpharmacy desc limit 1;");
+				ResultSet res=last_id.executeQuery();
+				Long id_pharmacy=0L;
+				if(res.next())
+					id_pharmacy=res.getLong(1);
+				stmt_2.executeUpdate("insert into employees(idpharmacy,surname,first_name,date_of_birth,empl_year) values('"+id_pharmacy+ 
+				"', '" + employees.getSurname()+ 
+				"', '" +employees.getFirst_Name()+ 
+				"', '" +employees.getDateOfBirth()+ 
+				"', '" +employees.getEmplYear()+ "');");
+				stmt_3.executeUpdate("insert into locations(city,county,idpharmacy) values('"+locations.getCity()+ 
+						"', '" + locations.getCounty()+ 
+						"', '" +id_pharmacy+ "');");
 			} catch (SQLException sqle) {
 				sqle.printStackTrace();
 			}
@@ -59,7 +79,8 @@ public class PharmaciesDAO {
 		if(con != null) {
 			try {
 				PreparedStatement show;
-				show = con.prepareStatement("SELECT * FROM pharmacies");
+				show = con.prepareStatement("SELECT * FROM pharmacies p inner join locations l "
+						+ "on l.idpharmacy=p.idpharmacy inner join employees e on e.idpharmacy=p.idpharmacy;");
 				rs = show.executeQuery();
 			} catch (SQLException sqle) {
 				sqle.printStackTrace();
@@ -74,7 +95,7 @@ public class PharmaciesDAO {
 	}
 	
 	public void modifyPharmacies(String pharmacies, String idpharmacy, long ID, String[] campuri, String[]
-			valori) throws SQLException, Exception {
+			valori,LocationsModel locations, EmployeesModel employees) throws SQLException, Exception {
 			String update = "update " + pharmacies + " set ";
 			String temp = "";
 			if (con != null) {
@@ -93,6 +114,20 @@ public class PharmaciesDAO {
 			Statement stmt;
 			stmt = con.createStatement();
 			stmt.executeUpdate(update);
+			PreparedStatement ps;
+			ps=con.prepareStatement("update employees set surname=?, first_name=?,date_of_birth=?,empl_year=? where idpharmacy=?");
+			ps.setString(1, employees.getSurname());
+			ps.setString(2, employees.getFirst_Name());
+			ps.setDate(3, employees.getDateOfBirth());
+			ps.setDate(4, employees.getEmplYear());
+
+			ps.setLong(5, ID);
+			ps.execute();
+			ps=con.prepareStatement("update locations set city=?, county=? where idpharmacy=?");
+			ps.setString(1, locations.getCity());
+			ps.setString(2, locations.getCounty());
+			ps.setLong(3, ID);
+			ps.execute();
 			} catch (SQLException sqle) {
 			sqle.printStackTrace();
 			throw new SQLException(error);

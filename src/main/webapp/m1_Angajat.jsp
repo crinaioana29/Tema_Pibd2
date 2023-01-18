@@ -7,13 +7,18 @@
 <title>Tabela Angajati</title>
 <link href="table.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
+<style type="text/css">
+body {background-image:url("142036.jpg");
+	  background-size:1080px;}  
+</style>
+</head>
 <jsp:useBean id="jb" scope="session" class="db.JavaBean" />
 <jsp:setProperty name="jb" property="*" />
 <body>
 <h1 align="center">Tabela Angajati:</h1>
 <br/>
-<p align="center"><a href="nou_Angajat.jsp"><b>Adauga un nou angajat.</b></a> <a
-href="home.html"><b>Home</b></a></p>
+<p align="center"><a href="nou_Angajat.jsp"><button>Adauga un nou angajat.</button></a> <a
+href="home.html"><button>Home</button></a></p>
 <%
 jb.connect();
 String temp=request.getParameter("primaryKey");
@@ -60,7 +65,7 @@ jb.disconnect();
 </p>
 </form>
 <p align="center" >
-<a href="home.html"><b>Home</b></a>
+<a href="home.html"><button>Home</button></a>
 <br/>
 </body>
 </html>

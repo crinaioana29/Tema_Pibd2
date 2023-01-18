@@ -14,7 +14,7 @@ public class JavaBean {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tema_pibd?useSSL=false", 
 					"root",
-					"C@nst@n72@");
+					"");
 		} catch (ClassNotFoundException cnfe) {
 			cnfe.printStackTrace();
 		} catch (SQLException sqle) {

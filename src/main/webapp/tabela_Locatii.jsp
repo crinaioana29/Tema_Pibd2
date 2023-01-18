@@ -6,13 +6,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Tabela Locatii</title>
 </head>
+<style type="text/css">
+body {background-image:url("142036.jpg");
+	  background-size:1080px;}
+</style>
+</head>
 <jsp:useBean id="jb" scope="session" class="db.JavaBean" />
 <jsp:setProperty name="jb" property="*" />
 <body>
-<h1 align="center"> Tabela Locatii:</h1>
+<h1 align="center" style="color:black;font-family: Verdana, sans-serif;"> Tabela Locatii:</h1>
 <br/>
-<p align="center"><a href="nou_Locatie.jsp"><b>Adauga o noua locatie.</b></a> <a
-href="home.html"><b>Home</b></a></p>
+<p align="center"><a href="nou_Locatie.jsp"><button>Adauga o noua locatie.</button></a> <a
+href="home.html"><button>Home</button></a></p>
 <form action="sterge_Locatie.jsp" method="post">
 <table border="1" align="center">
 <tr>
@@ -48,7 +53,7 @@ jb.disconnect();
 %>
 <br/>
 <p align="center">
-<a href="home.html"><b>Home</b></a>
+<a href="home.html"><button>Home</button></a>
 <br/>
 </p>
 </body>
